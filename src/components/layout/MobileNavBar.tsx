@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Link, useLocation } from "react-router";
 
-import { MenuHomeIconSvg, MenuDatabaseIconSvg } from "../svg/home";
+// import { MenuHomeIconSvg, MenuDatabaseIconSvg } from "../svg/home";
+import { HomeIcon, ModelIcon, MarketIcon, DaoIcon } from '../svg/icons/tabbar'
 
 import { cn } from "@/lib/utils";
 
@@ -57,7 +58,7 @@ export const MobileNavBar: FC<MobileNavBarProps> = () => {
       <div className=" border border-white rounded-full py-4 bg-[#171619] items-center text-[#AAADBA] grid grid-cols-4 place-items-center">
         <MenuItem
           title="Home"
-          icon={<MenuHomeIconSvg className=" size-6" />}
+          icon={<HomeIcon className="size-6" />}
           href="/portal"
           isActive={location.pathname.startsWith("/portal")}
         />
@@ -73,19 +74,19 @@ export const MobileNavBar: FC<MobileNavBarProps> = () => {
         </div> */}
         <MenuItem
           title="Dao"
-          icon={<MenuDatabaseIconSvg className=" size-6" />}
+          icon={<DaoIcon className=" size-6" />}
           href="/dao"
           isActive={location.pathname.startsWith("/dao")}
         />
         <MenuItem
           title="Model"
-          icon={<MenuDatabaseIconSvg className=" size-6" />}
+          icon={<ModelIcon className=" size-6" />}
           href="/model"
           isActive={location.pathname.startsWith("/model")}
         />
         <MenuItem
           title="Market"
-          icon={<MenuDatabaseIconSvg className=" size-6" />}
+          icon={<MarketIcon className=" size-6" />}
           href="/market"
           isActive={location.pathname.startsWith("/market")}
         />

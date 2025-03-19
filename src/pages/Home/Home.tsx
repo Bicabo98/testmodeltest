@@ -1,30 +1,30 @@
-import { toast } from 'sonner';
-import {  useAppKit, useAppKitAccount, useDisconnect } from '@reown/appkit/react';
+// import { toast } from 'sonner';
+// import {  useAppKit, useAppKitAccount, useDisconnect } from '@reown/appkit/react';
 
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { Input } from '@/components/ui/input';
+// import { Button } from '@/components/ui/button';
+// import { Checkbox } from '@/components/ui/checkbox';
+// import {
+//   Dialog,
+//   DialogContent,
+//   DialogFooter,
+//   DialogHeader,
+//   DialogTitle,
+//   DialogTrigger,
+// } from '@/components/ui/dialog';
+// import { Input } from '@/components/ui/input';
 
 function Home() {
-  const { open } = useAppKit();
-  const { address } = useAppKitAccount();
-  const { disconnect } = useDisconnect();
+  // const { open } = useAppKit();
+  // const { address } = useAppKitAccount();
+  // const { disconnect } = useDisconnect();
 
-  const showErrorToast = () => {
-    toast.error('An error toast shows up.');
-  };
+  // const showErrorToast = () => {
+  //   toast.error('An error toast shows up.');
+  // };
   return (
-    <div>
-      Home Page
-      {address ? (
+    <div className="w-full h-full text-center mt-[150px]">
+      Coming soon...
+      {/* {address ? (
         <Button onClick={() => disconnect()}>Disconnect</Button>
       ) : (
         <Button onClick={() => open()}>Connect Wallet</Button>
@@ -82,8 +82,8 @@ function Home() {
               <Button type="submit">Save changes</Button>
             </DialogFooter>
           </DialogContent>
-        </Dialog>
-      </div>
+        </Dialog> 
+      </div>*/}
     </div>
   );
 }
