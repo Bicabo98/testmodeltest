@@ -1,6 +1,7 @@
 import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router';
 
 import History from './pages/History';
+import { MobileNavBar } from './components/layout/MobileNavBar';
 
 import Home from '@/pages/Home/Home';
 import Profile from '@/pages/Profile/Profile';
@@ -13,11 +14,14 @@ function AppRouter() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/setting" element={<Profile />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/portal" element={<Home />} />
+        <Route path="/model" element={<Profile />} />
+        <Route path="/market" element={<History />} />
+        <Route path="/dao" element={<History />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster position="top-right" />
+      <MobileNavBar />
     </Router>
   );
 }
