@@ -1,10 +1,11 @@
 import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router';
 
-import History from './pages/History';
 import { MobileNavBar } from './components/layout/MobileNavBar';
 
+import Market from '@/pages/Market';
 import Home from '@/pages/Home/Home';
-import Profile from '@/pages/Profile/Profile';
+import Model from '@/pages/Model';
+import Dao from '@/pages/Dao';
 // import Header from '@/components/Header/Header';
 import { Toaster } from '@/components/ui/sonner';
 import GetStarted from '@/pages/Started';
@@ -28,9 +29,9 @@ function AppContent() {
         <Route path="/" element={<GetStarted />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/portal" element={<Home />} />
-        <Route path="/model" element={<Profile />} />
-        <Route path="/market" element={<History />} />
-        <Route path="/dao" element={<History />} />
+        <Route path="/model" element={<Model />} />
+        <Route path="/market" element={<Market />} />
+        <Route path="/dao" element={<Dao />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster position="top-right" />
