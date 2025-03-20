@@ -10,6 +10,8 @@ import Dao from '@/pages/Dao';
 // import Header from '@/components/Header/Header';
 import { Toaster } from '@/components/ui/sonner';
 import GetStarted from '@/pages/Started';
+import CreateDaoPage from './pages/CreateDao';
+import CreateDaoFormPage from './pages/CreateDao/DaoForm';
 // import SignUp from '@/pages/Signup';
 import ChatPage from '@/pages/Model/chat';
 
@@ -23,7 +25,8 @@ function AppRouter() {
 
 function AppContent() {
   const location = useLocation()
-  const withoutLoginPage = ['/', '/signup', '/login', '/chat']
+  // const withoutLoginPage = ['/', '/signup', '/login', '/chat']
+  const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm']
   return (
     <>
       {/* <Header /> */}
@@ -38,6 +41,10 @@ function AppContent() {
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/market" element={<Market />} />
         <Route path="/dao" element={<Dao />} />
+        <Route path="/createDao" element={<CreateDaoPage />} />
+        <Route path="/createDaoForm" element={<CreateDaoFormPage />} />
+
+
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster position="top-right" />
