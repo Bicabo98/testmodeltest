@@ -173,6 +173,7 @@ type FormType = "email" | "code" | "createWallet" | "lamportId";
 
 export default function LoginV2Page() {
   const privy = usePrivy();
+  console.log("privy", privy);
   const [formType, setFormType] = useState<FormType>("email");
   const { sendCode, loginWithCode, state } = useLoginWithEmail();
   const [isErrorOpen, setIsErrorOpen] = useState(false);

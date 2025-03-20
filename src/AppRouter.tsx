@@ -11,6 +11,7 @@ import Dao from '@/pages/Dao';
 import { Toaster } from '@/components/ui/sonner';
 import GetStarted from '@/pages/Started';
 // import SignUp from '@/pages/Signup';
+import ChatPage from '@/pages/Model/chat';
 
 function AppRouter() {
   return (
@@ -22,7 +23,7 @@ function AppRouter() {
 
 function AppContent() {
   const location = useLocation()
-  const withoutLoginPage = ['/', '/signup', '/login']
+  const withoutLoginPage = ['/', '/signup', '/login', '/chat']
   return (
     <>
       {/* <Header /> */}
@@ -34,6 +35,7 @@ function AppContent() {
 
         <Route path="/portal" element={<Home />} />
         <Route path="/model" element={<Model />} />
+        <Route path="/chat" element={<ChatPage />} />
         <Route path="/market" element={<Market />} />
         <Route path="/dao" element={<Dao />} />
         <Route path="*" element={<Navigate to="/" replace />} />
