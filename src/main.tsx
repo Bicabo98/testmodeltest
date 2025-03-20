@@ -5,11 +5,13 @@ import { WagmiProvider } from "wagmi";
 import { arbitrum, mainnet, AppKitNetwork } from "@reown/appkit/networks";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { WagmiAdapter } from "@reown/appkit-adapter-wagmi";
+import {PrivyProvider} from '@privy-io/react-auth';
 
 import { initResponsive } from './lib/responsive.ts';
 import AppRouter from './AppRouter.tsx';
 import config from './config/index.ts';
 import './index.css';
+
 
 initResponsive();
 
@@ -44,11 +46,28 @@ createAppKit({
 });
 
 createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-     <WagmiProvider config={wagmiAdapter.wagmiConfig}>
-      <QueryClientProvider client={queryClient}>
-        <AppRouter />
-      </QueryClientProvider>
-    </WagmiProvider>
-  </React.StrictMode>
+  <>
+    <PrivyProvider appId='cm843bqwy00t2v7iapo6cl0zd'
+          config={{
+            // Customize Privy's appearance in your app
+            appearance: {
+              theme: 'light',
+              accentColor: '#676FFF',
+            //   logo: 'https://your-logo-url',
+            },
+            // Create embedded wallets for users who don't have a wallet
+            // embeddedWallets: {
+            //   ethereum: {
+            //     createOnLogin: 'users-without-wallets',
+            //   },
+            // },
+          }}
+    >
+      <WagmiProvider config={wagmiAdapter.wagmiConfig}>
+        <QueryClientProvider client={queryClient}>
+          <AppRouter />
+        </QueryClientProvider>
+      </WagmiProvider>
+    </PrivyProvider>
+  </>
 );

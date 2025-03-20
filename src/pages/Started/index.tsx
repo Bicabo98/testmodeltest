@@ -8,7 +8,7 @@ function GetStarted(){
   }
 
   const login = () => {
-    navigate('/portal')
+    navigate('/login')
   }
 
   return (
