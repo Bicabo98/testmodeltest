@@ -4,7 +4,7 @@ import ImgEmoji from '/images/chat/emoji.png'
 import ImgSend from '/images/chat/send.png'
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import { aiChat, aiChatHistory } from '@/api/model';
 import ReactMarkdown from 'react-markdown';
 import { Button } from "@/components/ui/button";
