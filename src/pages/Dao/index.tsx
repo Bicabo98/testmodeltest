@@ -85,8 +85,9 @@ function Dao() {
   // })
 
   const startChat = (modelName: string) => {
-    navigate('/daoChat', { state: { modelName: modelName } });
+    // navigate('/daoChat', { state: { modelName: modelName } });
     //navigate('/daoChat', { state: { modelName } })
+    navigate('/daoChat');
   }
   return (
     <div className="w-full px-[15px] h-full text-center mt-[44px]">
