@@ -1,4 +1,4 @@
-import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router';
 
 import { MobileNavBar } from './components/layout/MobileNavBar';
 import LoginV2Page from './pages/Signup/LoginV2';
