@@ -13,7 +13,7 @@ import ChatPage from '@/pages/Model/chat';
 import DaoChatPage from '@/pages/Dao/chat';
 
 // 将 AppContent 组件分离出来
-function AppContent() {
+function AppRouter() {
   const location = useLocation();
   const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm', '/chat', '/daoChat'];
 
@@ -36,15 +36,6 @@ function AppContent() {
       <Toaster position="top-right" />
       {!withoutLoginPage.includes(location.pathname) && <MobileNavBar />}
     </>
-  );
-}
-
-// 主组件
-function AppRouter() {
-  return (
-    <BrowserRouter>
-      <AppContent />
-    </BrowserRouter>
   );
 }
 
