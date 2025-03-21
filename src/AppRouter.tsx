@@ -1,42 +1,28 @@
-import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router';
-
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { MobileNavBar } from './components/layout/MobileNavBar';
 import LoginV2Page from './pages/Signup/LoginV2';
-
 import Market from '@/pages/Market';
 import Home from '@/pages/Home/Home';
 import Model from '@/pages/Model';
 import Dao from '@/pages/Dao';
-// import Header from '@/components/Header/Header';
 import { Toaster } from '@/components/ui/sonner';
 import GetStarted from '@/pages/Started';
 import CreateModelPage from './pages/CreateModel';
 import CreateModelFormPage from './pages/CreateModel/ModelForm';
-// import SignUp from '@/pages/Signup';
 import ChatPage from '@/pages/Model/chat';
 import DaoChatPage from '@/pages/Dao/chat';
 
-function AppRouter() {
-  return (
-    <Router>
-      <AppContent />
-    </Router>
-  );
-}
-
+// 将 AppContent 组件分离出来
 function AppContent() {
-  const location = useLocation()
-  // const withoutLoginPage = ['/', '/signup', '/login', '/chat']
-  const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm', '/chat', '/daoChat']
+  const location = useLocation();
+  const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm', '/chat', '/daoChat'];
+
   return (
     <>
-      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<GetStarted />} />
-        {/* <Route path="/signup" element={<SignUp />} /> */}
         <Route path="/signup" element={<LoginV2Page />} />
         <Route path="/login" element={<LoginV2Page />} />
-
         <Route path="/portal" element={<Home />} />
         <Route path="/model" element={<Model />} />
         <Route path="/chat" element={<ChatPage />} />
@@ -45,15 +31,20 @@ function AppContent() {
         <Route path="/createModel" element={<CreateModelPage />} />
         <Route path="/createModelForm" element={<CreateModelFormPage />} />
         <Route path="/daoChat" element={<DaoChatPage />} />
-
-
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       <Toaster position="top-right" />
-      {
-        !withoutLoginPage.includes(location.pathname) && <MobileNavBar />
-      }
+      {!withoutLoginPage.includes(location.pathname) && <MobileNavBar />}
     </>
+  );
+}
+
+// 主组件
+function AppRouter() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
   );
 }
 
