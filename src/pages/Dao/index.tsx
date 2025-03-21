@@ -6,7 +6,7 @@ import ImgAavator from '/images/model/avator.png'
 import { Button } from "@/components/ui/button";
 import { daoChatCount, getModels, nostrMessage } from '@/api/model'
 import { Relay } from 'nostr-tools/relay'
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 type ModelItem = {
   name: string;
@@ -65,29 +65,9 @@ function Dao() {
     })
   }, [])
 
-  // useEffect(() => {
-  //   const connectWs = async () => {
-  //     const relay = await Relay.connect('ws://213.136.84.124:10547')
-  //     console.log(`connected to ${relay.url}`)
-
-  //     relay.subscribe([
-  //       {
-  //         kinds: [42],
-  //         "#e": ["chat_group_id"]
-  //       }
-  //     ], {
-  //       onevent(event) {
-  //         console.log('got event:', event)
-  //       }
-  //     })
-  //   }
-  //   connectWs()
-  // })
-
   const startChat = (modelName: string) => {
-    // navigate('/daoChat', { state: { modelName: modelName } });
+    navigate('/daoChat', { state: { modelName: modelName } });
     //navigate('/daoChat', { state: { modelName } })
-    navigate('/daoChat');
   }
   return (
     <div className="w-full px-[15px] h-full text-center mt-[44px]">

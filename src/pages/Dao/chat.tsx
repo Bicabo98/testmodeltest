@@ -81,7 +81,7 @@ const MessageItem = ({ item }: { item: Msg }) => {
 
 const DaoChatPage = () => {
     const location = useLocation();
-    const { modelName } = location.state || {};
+    const { modelName = 'Default Model' } = location.state || {};
     const [messages, setMessages] = useState<Msg[]>([]);
     const [userMessage, setUserMessage] = useState('');
 
