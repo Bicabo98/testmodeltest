@@ -151,3 +151,9 @@ export const fetchLoginWalletNonce = async (address: string) => {
     const response = await haxios.get(`/api/v1/auth/nonce/${address}`);
     return response.data.result;
 }
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const createModelDao = async (data: any) => {
+    const response = await haxios.post(`/api/create_model`, data);
+    return response.data.result;
+}
