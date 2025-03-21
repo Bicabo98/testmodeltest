@@ -70,24 +70,24 @@ function Model() {
     })
   }, [])
 
-  useEffect(() =>{
-    const connectWs = async () => {
-      const relay = await Relay.connect('ws://213.136.84.124:10547')
-      console.log(`connected to ${relay.url}`)
+  // useEffect(() =>{
+  //   const connectWs = async () => {
+  //     const relay = await Relay.connect('ws://213.136.84.124:10547')
+  //     console.log(`connected to ${relay.url}`)
   
-      relay.subscribe([
-        {
-          kinds: [42],
-          "#e": ["chat_group_id"]
-        }
-      ], {
-        onevent(event) {
-          console.log('got event:', event)
-        }
-      })
-    }
-    connectWs()
-  })
+  //     relay.subscribe([
+  //       {
+  //         kinds: [42],
+  //         "#e": ["chat_group_id"]
+  //       }
+  //     ], {
+  //       onevent(event) {
+  //         console.log('got event:', event)
+  //       }
+  //     })
+  //   }
+  //   connectWs()
+  // })
 
   const startChat = (modelName: string) => {
 
