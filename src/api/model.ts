@@ -15,3 +15,12 @@ export const aiChat = async (data: any) => {
 export const aiChatHistory = async  ( data:any) => {
   return await haxios.post('/api/chat/history', data)
 }
+
+
+export const daoChat = async(data:any) => {
+  return await haxios.post('/api/daochat/send', data)
+}
+
+export const daoChatCount = async(data:any) => {
+  return await haxios.post('/api/chat/count', data)
+}
