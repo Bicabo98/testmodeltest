@@ -18,7 +18,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://213.136.84.124:8080',
+        target: 'https://nftkash.xyz',
         changeOrigin: true,
         // rewrite: (path) => path.replace(/^\/api/, ''),
       }

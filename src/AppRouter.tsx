@@ -26,7 +26,7 @@ function AppRouter() {
 function AppContent() {
   const location = useLocation()
   // const withoutLoginPage = ['/', '/signup', '/login', '/chat']
-  const withoutLoginPage = ['/', '/signup', '/login', '/createModel', '/createModelForm']
+  const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm', '/chat']
   return (
     <>
       {/* <Header /> */}
