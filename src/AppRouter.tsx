@@ -14,6 +14,7 @@ import CreateModelPage from './pages/CreateModel';
 import CreateModelFormPage from './pages/CreateModel/ModelForm';
 // import SignUp from '@/pages/Signup';
 import ChatPage from '@/pages/Model/chat';
+import DaoChatPage from '@/pages/Dao/chat';
 
 function AppRouter() {
   return (
@@ -26,7 +27,7 @@ function AppRouter() {
 function AppContent() {
   const location = useLocation()
   // const withoutLoginPage = ['/', '/signup', '/login', '/chat']
-  const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm', '/chat']
+  const withoutLoginPage = ['/', '/signup', '/login', '/createDao', '/createDaoForm', '/chat', '/daoChat']
   return (
     <>
       {/* <Header /> */}
@@ -43,6 +44,7 @@ function AppContent() {
         <Route path="/dao" element={<Dao />} />
         <Route path="/createModel" element={<CreateModelPage />} />
         <Route path="/createModelForm" element={<CreateModelFormPage />} />
+        <Route path="/daoChat" element={<DaoChatPage />} />
 
 
         <Route path="*" element={<Navigate to="/" replace />} />

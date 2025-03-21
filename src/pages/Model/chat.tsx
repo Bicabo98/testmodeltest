@@ -7,14 +7,15 @@ import { useNavigate } from "react-router";
 import { useLocation } from 'react-router-dom';
 import { aiChat, aiChatHistory } from '@/api/model';
 import ReactMarkdown from 'react-markdown';
+import { Button } from "@/components/ui/button";
 
 interface Msg {
   role: string;
   content: string;
 }
-const LoadingBubble = () => {
+const LoadingBubble = ({ modelName }: { modelName: string }) => {
   const [dots, setDots] = useState('');
-  
+
   useEffect(() => {
     const interval = setInterval(() => {
       setDots(prev => {
@@ -30,7 +31,7 @@ const LoadingBubble = () => {
     <div className="flex items-start mr-2">
       <img src={ImgAavator} alt="AI" className="w-[26px] h-[26px] rounded-[6px] mr-2" />
       <div className="flex flex-col">
-        <span className="font-semibold text-black">Model DAO</span>
+        <span className="font-semibold text-black">{modelName}</span>
         <div className="max-w-[80%] p-4 rounded-lg break-words bg-white text-black">
           <div className="flex items-center">
             <span className="text-gray-500">
@@ -46,8 +47,13 @@ const LoadingBubble = () => {
 
 const Header = ({ modelName }: { modelName: string }) => {
   const navigate = useNavigate();
+  const [showComingSoon, setShowComingSoon] = useState(false);
   const goBack = () => {
     navigate(-1);
+  }
+  const handleThreeDotsClick = () => {
+    setShowComingSoon(true)
+    setTimeout(() => setShowComingSoon(false), 2000);
   }
   return (
     <div className="bg-white flex items-center p-4 shadow-md">
@@ -57,17 +63,38 @@ const Header = ({ modelName }: { modelName: string }) => {
         </div>
       </div>
       <h1 className="flex-1 text-center">{modelName}</h1>
+      <div className="relative">
+        <Button
+          onClick={handleThreeDotsClick}
+          variant='ghost'
+          className="text-gray-600"
+        >
+          •••
+        </Button>
+        {showComingSoon && (
+          <div className="absolute right-0 mt-2 bg-gray-200 text-gray-800 p-2 rounded shadow-lg">
+            Coming soon
+          </div>
+        )}
+      </div>
     </div>
   );
-}
-const MessageItem = ({ item }: { item: Msg }) => {
+};
+
+
+
+
+
+
+
+const MessageItem = ({ item, modelName }: { item: Msg; modelName: string }) => {
   return (
     <div className={`flex mb-2 ${item.role === 'assistant' ? 'justify-start' : 'justify-end'}`}>
       {item.role === 'assistant' ? (
         <div className="flex items-start mr-2">
           <img src={ImgAavator} alt="AI" className="w-[26px] h-[26px] rounded-[6px] mr-2" />
           <div className="flex flex-col">
-            <span className="font-semibold text-black">Model DAO</span>
+            <span className="font-semibold text-black">{modelName}</span>
             <div className="max-w-[80%] p-2 rounded-lg break-words bg-white text-black">
               <ReactMarkdown>{item.content}</ReactMarkdown>
             </div>
@@ -123,19 +150,19 @@ const ChatPage = () => {
             created_at: event.created_at
           };
         });
-  
+
         const groupedEvents = events.reduce((acc: any[], event: any) => {
           const lastGroup = acc[acc.length - 1];
           if (lastGroup && lastGroup[0].created_at === event.created_at) {
             if (event.role === 'assistant') {
-              lastGroup.unshift(event); 
+              lastGroup.unshift(event);
             } else {
-              lastGroup.push(event); 
+              lastGroup.push(event);
             }
           } else {
             acc.push([event]);
           }
-          
+
           return acc;
         }, []);
         const historyMessages: Msg[] = groupedEvents
@@ -145,13 +172,13 @@ const ChatPage = () => {
             role: event.role,
             content: event.content
           }));
-  
+
         setMessages(historyMessages);
       } catch (error) {
         console.error("Error fetching initial AI response:", error);
       }
     };
-  
+
     fetchHistoryResponse();
   }, [modelName, userId, sessionId]);
 
@@ -185,11 +212,11 @@ const ChatPage = () => {
       <div className="h-10" />
       <div className="flex-1 overflow-y-auto px-[15px] pb-[170px]">
         {messages.map((item, index) => (
-          <MessageItem item={item} key={index} />
+          <MessageItem item={item} modelName={modelName} key={index} />
         ))}
         {loading && (
           <div className="mt-2">
-            <LoadingBubble />
+            <LoadingBubble modelName={modelName} />
           </div>
         )}
         <div ref={messagesEndRef} />
