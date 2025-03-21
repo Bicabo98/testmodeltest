@@ -6,7 +6,7 @@ import ImgAavator from '/images/model/avator.png'
 import { Button } from "@/components/ui/button";
 import { daoChatCount, getModels, nostrMessage } from '@/api/model'
 import { Relay } from 'nostr-tools/relay'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 type ModelItem = {
   name: string;

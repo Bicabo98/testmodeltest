@@ -1,6 +1,6 @@
 import { createRoot } from 'react-dom/client';
 import { WagmiProvider } from '@privy-io/wagmi';
-import { BrowserRouter } from 'react-router-dom';
+
 import AppRouter from './AppRouter';
 
 // import { arbitrum, mainnet, AppKitNetwork } from "@reown/appkit/networks";
@@ -60,51 +60,30 @@ const queryClient = new QueryClient();
 //   },
 // });
 
-// createRoot(document.getElementById('root')!).render(
-//   <>
-//     <PrivyProvider
-//       appId="cm843bqwy00t2v7iapo6cl0zd"
-//       config={{
-//         // Customize Privy's appearance in your app
-//         appearance: {
-//           theme: 'light',
-//           accentColor: '#676FFF',
-//           //   logo: 'https://your-logo-url',
-//         },
-//         // Create embedded wallets for users who don't have a wallet
-//         // embeddedWallets: {
-//         //   ethereum: {
-//         //     createOnLogin: 'users-without-wallets',
-//         //   },
-//         // },
-//       }}
-//     >
-//       <QueryClientProvider client={queryClient}>
-//         <WagmiProvider config={config}>
-//           <AppRouter />
-//         </WagmiProvider>
-//       </QueryClientProvider>
-//     </PrivyProvider>
-//   </>
-// );
-
-
 createRoot(document.getElementById('root')!).render(
-  <PrivyProvider
-    appId="cm843bqwy00t2v7iapo6cl0zd"
-    config={{
-      appearance: {
-        theme: 'light',
-        accentColor: '#676FFF',
-      },
-    }}
-  >
-    <QueryClientProvider client={queryClient}>
-      <WagmiProvider config={config}>
-        <BrowserRouter>
+  <>
+    <PrivyProvider
+      appId="cm843bqwy00t2v7iapo6cl0zd"
+      config={{
+        // Customize Privy's appearance in your app
+        appearance: {
+          theme: 'light',
+          accentColor: '#676FFF',
+          //   logo: 'https://your-logo-url',
+        },
+        // Create embedded wallets for users who don't have a wallet
+        // embeddedWallets: {
+        //   ethereum: {
+        //     createOnLogin: 'users-without-wallets',
+        //   },
+        // },
+      }}
+    >
+      <QueryClientProvider client={queryClient}>
+        <WagmiProvider config={config}>
           <AppRouter />
-        </BrowserRouter>
-      </WagmiProvider>
-    </QueryClientProvider>
-  </PrivyProvider>
+        </WagmiProvider>
+      </QueryClientProvider>
+    </PrivyProvider>
+  </>
 );

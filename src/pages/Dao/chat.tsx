@@ -3,7 +3,7 @@ import ImgAavator from '/images/model/avator.png'
 import ImgSend from '/images/chat/send.png'
 import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router";
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 import ReactMarkdown from 'react-markdown';
 import { aiChatHistory, daoChat } from '@/api/model';
 import { Button } from "@/components/ui/button";
