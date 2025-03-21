@@ -18,7 +18,7 @@ function CreateDaoFormPage() {
     try {
       const data = {
         name: values.name,
-        avatar: values.avatar || 'https://example.com/avatar.png',
+        avatar: values.avatar || 'https://dcnftmetadata.s3.ap-southeast-1.amazonaws.com/uploads/2_9c702ff7-45f1-411b-80e3-279a09b64757.png',
         description: values.description,
         participant_count: 10,
         class_name: 'example_class',
