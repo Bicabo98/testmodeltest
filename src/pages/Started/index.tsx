@@ -1,5 +1,7 @@
-import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router';
+
+import { Button } from '@/components/ui/button';
+import { useTestLogin } from '@/hooks/user';
 
 function GetStarted(){
   const navigate = useNavigate()
@@ -10,6 +12,7 @@ function GetStarted(){
   const login = () => {
     navigate('/login')
   }
+  useTestLogin();
 
   return (
     <div className='mt-[150px] flex flex-col items-center justify-center'>
