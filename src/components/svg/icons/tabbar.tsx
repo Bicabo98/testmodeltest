@@ -127,3 +127,21 @@ export const SearchIcon = (props: SVGProps<SVGSVGElement>) => (
     </defs>
   </svg>
 )
+
+export const BackIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width={8}
+    height={15}
+    fill="none"
+  >
+    <path
+      stroke="#AAA"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M6.843 1.47 1 7.313l5.843 5.844"
+    />
+  </svg>
+)

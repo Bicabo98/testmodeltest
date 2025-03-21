@@ -15,4 +15,13 @@ export default defineConfig({
   define: {
     "process.env": {},
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://213.136.84.124:8080',
+        changeOrigin: true,
+        // rewrite: (path) => path.replace(/^\/api/, ''),
+      }
+    }
+  }
 });
